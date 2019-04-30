@@ -72,7 +72,7 @@ JOptionPane.showMessageDialog(null, "Ocurrio un error: "+ex.getMessage());
         jLabel8 = new javax.swing.JLabel();
         txtidentificacion = new javax.swing.JTextField();
         txtapellidos = new javax.swing.JTextField();
-        tctdireccion = new javax.swing.JTextField();
+        txtdireccion = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         txttelefono = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
@@ -156,7 +156,7 @@ JOptionPane.showMessageDialog(null, "Ocurrio un error: "+ex.getMessage());
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tctdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -217,7 +217,7 @@ JOptionPane.showMessageDialog(null, "Ocurrio un error: "+ex.getMessage());
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tctdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -247,7 +247,23 @@ JOptionPane.showMessageDialog(null, "Ocurrio un error: "+ex.getMessage());
     }//GEN-LAST:event_btneliminarActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-        // TODO add your handling code here:
+        Persona objPersona = new Persona();
+        
+        int  identificacion = Integer.parseInt(txtidentificacion.getText());
+        String nombres = txtnombre.getText();
+        String apellido = txtapellidos.getText();
+        String direccion = txtdireccion.getText();
+        String telefono = txttelefono.getText();
+        String email = txtemail.getText();
+        
+        boolean resultado = objPersona.insertarPersona(identificacion, nombres, apellido, direccion, apellido, apellido);
+                if(resultado){
+                    JOptionPane.showMessageDialog(null," se inserto correctamente.");
+                    
+                cargarTabla();
+               }else{
+               JOptionPane.showMessageDialog(null," ocurrioun error al insertar.");
+                }
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
@@ -306,8 +322,8 @@ JOptionPane.showMessageDialog(null, "Ocurrio un error: "+ex.getMessage());
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jttable;
-    private javax.swing.JTextField tctdireccion;
     private javax.swing.JTextField txtapellidos;
+    private javax.swing.JTextField txtdireccion;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtidentificacion;
     private javax.swing.JTextField txtnombre;
